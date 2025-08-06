@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import streams.model.Employee;
@@ -96,6 +97,18 @@ public class Grouping {
 		System.out.println("**************");
 
 
+		// Char Count in a single word
+		String string = "ABCDABCDEfgh";
+		Map<Character, Long> map = string.chars().mapToObj(c->(char) c).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+        System.out.println(map);
+		
+		System.out.println("**************");
+		List<Integer> numList = string.chars().mapToObj(c -> c).toList();
+		System.out.println(numList);
+
+		System.out.println("**************");
+		List<Character> charList = string.chars().mapToObj(c -> (char) c).toList();
+		System.out.println(charList);
 		
 		
 	}
