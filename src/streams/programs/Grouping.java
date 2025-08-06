@@ -5,7 +5,9 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -54,6 +56,8 @@ public class Grouping {
 				new Employee(106, "Frank", "IT", 72000), new Employee(107, "Grace", "HR", 48000),
 				new Employee(108, "Henry", "Sales", 55000), new Employee(109, "Ivy", "Sales", 57000));
 
+		
+		System.out.println("**************");
 		Map<String, List<Employee>> employeeListMap = employeeList.stream()
 				.collect(Collectors.groupingBy(Employee::getDepartment));
 		for (Map.Entry<String, List<Employee>> entry : employeeListMap.entrySet()) {
@@ -62,6 +66,16 @@ public class Grouping {
 		}
 		System.out.println("**************");
 		
+		// find the department with employee more than 1
+		/*
+		Set<Entry<String, List<Employee>>> entrySet = employeeList.stream()
+				.collect(Collectors.groupingBy(Employee::getDepartment)).entrySet();
+		*/
+		
+		List<String> list = employeeList.stream().collect(Collectors.groupingBy(Employee::getDepartment)).entrySet()
+				.stream().filter(x -> x.getValue().size() > 1).map(Entry::getKey).toList();	
+		
+		System.out.println("The Departments having employee greater than 1 are "+ list);
 		
 		//Find the Highest Salary Employee in Each Department Way 1
 		

@@ -19,7 +19,7 @@ public class CollectResults {
         //Convert a list of strings to a comma-separated single string.
         List<String> names = Arrays.asList("Nikhil", "Aditi", "Nikita", "Sanket", "manjiri", "Prajwal", "Krushna",
 				"Sagar", "Rajeshwari");
-        //String.join(", ", names);
+        //String.join(", ", names); // Opposite of split
         String collect = names.stream().collect(Collectors.joining(","));
         System.out.println(collect);
 	}
