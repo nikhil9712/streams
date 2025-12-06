@@ -22,7 +22,7 @@ public class PartiningBy {
 		students.add(new Student(108, "Bonya", "Novillex"));
 		
 		/*
-		 * partitioningBy takes predicate (Condition) similar to filter converts into 2
+		 * partitioningB y takes predicate (Condition) similar to filter converts into 2
 		 * partitions in map with 2 keys where 1st key is true which contains elements
 		 * which was satisfied with given predicate condition 2nd is false which
 		 * contains the elements which was not satisfied with given predicate condition

@@ -42,7 +42,7 @@ public class SortedStream {
         System.out.println("****************");
         
         List<Student> sortedAscStudents1 = students.stream().sorted((a,b)->Integer.compare(a.getRollNo(), Integer.valueOf(b.getRollNo()))).toList();
-        System.out.println(sortedAscStudents1);
+        System.out.println(sortedAscStudents1);  
         System.out.println("****************");
         
         

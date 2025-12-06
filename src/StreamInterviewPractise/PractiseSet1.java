@@ -44,6 +44,9 @@ public class PractiseSet1 {
 
 		// highest Salary Among all the employees
 
+		//Optional<Employee> max = employees.stream().max((a,b)-> Double.valueOf(a.getSalary()).compareTo(b.getSalary()));
+
+		
 		Optional<Employee> max = employees.stream().max(Comparator.comparing(Employee::getSalary));
 		if (max.isPresent()) {
 			System.out.println(

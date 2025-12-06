@@ -1,5 +1,6 @@
 package streams.programs;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -35,6 +36,7 @@ public class Distinct {
 		students.add(new Student(102, "Aditi", "Mumbai"));
 		students.add(new Student(102, "Aditi", "Mumbai"));
 
+		
 		List<Student> uniqueStudents = students.stream()
 				.collect(Collectors.collectingAndThen(
 						Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Student::getRollNo))),
