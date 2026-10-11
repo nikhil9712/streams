@@ -11,7 +11,7 @@ public class PractiseSet4 {
 
 	public static void main(String[] args) {
 
-		List<Employee> employeeList = Arrays.asList(new Employee(101, "Alice", "HR", 50000),
+		List<Employee> employeeList = Arrays.asList(new Employee(101, "Alice", "HR", 90000),
 				new Employee(102, "Bob", "Finance", 60000), new Employee(103, "Charlie", "HR", 52000),
 				new Employee(104, "David", "IT", 70000), new Employee(105, "Eva", "Finance", 65000),
 				new Employee(106, "Frank", "IT", 72000), new Employee(107, "Grace", "HR", 48000),
@@ -152,6 +152,41 @@ public class PractiseSet4 {
 		System.out.println("The Totak Salary of all It Department employees : "+totalSalaryItDeptSum);
 		System.out.println("*****************");
 
+		// 7A. Get list of unique departments.
+		Set<String> uniqueDepartment = employeeList.stream().map(x -> x.getDepartment()).collect(Collectors.toSet());
+		System.out.println("Unique Departments are : " + uniqueDepartment);
+		System.out.println("*****************");
 
+		// 7B. Get list of duplicate employee names.
+		List<Long> duplicateNames = employeeList.stream()
+				.collect(Collectors.groupingBy(Employee::getName, LinkedHashMap::new, Collectors.counting())).entrySet()
+				.stream().filter(x -> x.getValue() > 1).map(x -> x.getValue()).toList();
+		System.out.println("Duplicate names are : " + duplicateNames);
+		System.out.println("*****************");
+
+
+        //8A. Sort employees by salary (desc) then by name (asc).
+		List<Employee> sortedEmployees1=employeeList.stream().sorted((a,b)->Double.valueOf(b.getSalary()).compareTo(a.getSalary())).sorted((a,b)->a.getName().compareTo(b.getName())).toList();
+        System.out.println(sortedEmployees1);
+        System.out.println("*****************");
+        
+		//8B. Sort employees by department (asc) then salary (desc).
+        List<Employee> sortedEmployees2=employeeList.stream().sorted((a,b)->a.getDepartment().compareTo(b.getDepartment())).sorted((a,b)->Double.valueOf(b.getSalary()).compareTo(a.getSalary()) ).toList();
+        System.out.println(sortedEmployees2);
+        System.out.println("*****************");
+        
+
+        //9A. Check if any employee earns more than 80,000.
+        boolean anyMatch1 = employeeList.stream().anyMatch(x->x.getSalary()>80000);
+         if (anyMatch1) {
+			System.out.println("Yes Some EMployye Earns Salary More than 80,000");
+		}
+        
+         //9B. Check if all employees earn more than 20,000.
+         boolean anyMatch2 = employeeList.stream().anyMatch(x->x.getSalary()<20000);
+         if (!anyMatch2) {
+ 			System.out.println("Yes all Employees Earns Salary more than 20,000");
+ 		}
+         
 	}
 }
